@@ -14,18 +14,18 @@ import { ItemImg } from '../../models/ItemImg';
 export class ItemsComponent implements OnInit {
   items: Item[];
   image: string;
-  constructor(private itemService: ItemService) {
-
-// Get a reference to the storage service, which is used to create references in your storage bucket
-
-
+  constructor(private itemService: ItemService, private firebaseApp: FirebaseApp) {
   }
 
   ngOnInit() { //lifecycle function
     this.itemService.getItems().subscribe(items =>{
-      //console.log(items);
       this.items = items;
     })
+
+    this.firebaseApp.storage().ref('images/1.jpg').getDownloadURL().then(function(url) {
+      console.log("la url ", url)
+    })
+
   }
 }
 
