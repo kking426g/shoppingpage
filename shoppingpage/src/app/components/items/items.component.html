@@ -1,3 +1,15 @@
-<p>
-  items works!
-</p>
+
+<div id="fh5co-main" *ngIf="itmes?.length > 0;else noItems">
+  <div class="fh5co-narrow-content" *ngFor="let item of items">
+    <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item"><a href=""><img src={{image}} class="img-responsive"/>
+        <h3 class="fh5co-work-title">{{item.title}}</h3>
+        <p>Illustration, Branding</p></a></div>
+    <div class="clearfix visible-sm-block"></div>
+  </div>
+</div>
+
+<ng-template #noItems>
+  <hr>
+  <h5>there is no items</h5>
+</ng-template>
+
